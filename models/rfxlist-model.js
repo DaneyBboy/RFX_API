@@ -10,7 +10,8 @@ const rfxlist = new Schema({
     purpose:{type:String},
     projectGoals:{type:String},
     projectSummary:{type:String},
-    scopeOfWork:{type:String}
+    scopeOfWork:{type:String},
+    fileName:{type:String}
 
 })
 
