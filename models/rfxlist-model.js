@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const rfxlist = new Schema({
-    proposalCriteria:{type:String},
-    rfxNumber:{type:Number},
+    proposalCriteria:{type:String, require},
+    rfxNumber:{type:String, unique:true},
     dateIssued:{type:Date},
     contactPerson:{type:String},
     submissionDate:{type:Date},
@@ -11,7 +11,7 @@ const rfxlist = new Schema({
     projectGoals:{type:String},
     projectSummary:{type:String},
     scopeOfWork:{type:String},
-    fileName:{type:String}
+    fileUpload:{type:String}
 
 })
 

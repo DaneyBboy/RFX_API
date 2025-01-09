@@ -32,6 +32,7 @@ app.use('/users', usersRouter);
 app.use('/rfx', rfxRouter)
 app.use('/price', priceRouter)
 app.use('/auth', authRouter)
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
