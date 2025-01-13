@@ -88,15 +88,6 @@ router.post('/create', authorize, async function (req, res, next) {
 
 });
 
-// router.post('/createnew', upload.single('fileUpload'), async(req,res)=>{
-
-//     const  dataFromPostman = req.body
-
-//     console.log(dataFromPostman)  
-//     const result = await rfx.create(dataFromPostman)      
-//     res.send(result)
-
-// })
 
 router.post('/createnew', upload.single('fileUpload'), async (req, res) => {
   try {
