@@ -21,7 +21,7 @@ router.post('/login', async(req,res)=>{
     }
     const isPasswordMatched = await bcrypt.compare(password, user.password)
     if(isPasswordMatched){
-      const token =  jwt.sign({email:user.email, role:user.role},"hello-world",{expiresIn:'1h'})
+      const token =  jwt.sign({email:user.email, name:user.name, role:user.role},"hello-world",{expiresIn:'1h'})
         res.json({token})
     }else{
         res.status(401).json({message:"authentication failed, username or password incorrect"})

@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage })
 
-const client = new MongoClient('mongodb://localhost:27017/')
+const client = new MongoClient(`mongodb://${process.env.DATABASE}/`)
 
 router.get('/list', async function (req, res, next) {
   let result = await rfx.find()
@@ -43,7 +43,7 @@ router.get('/number/:rfxNumber', async function (req, res, next) {
     if (!rfxDetails) {
       return res.status(404).json({ error: 'RFX not found' });
     }
-    const fileUrl = `http://localhost:4000/${rfxDetails.fileUpload}`;
+    const fileUrl = `${process.env.API}/${rfxDetails.fileUpload}`;
     res.json({ ...rfxDetails._doc, fileUrl });
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch RFX details' });

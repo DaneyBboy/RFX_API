@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors')
+require('dotenv').config();
 
 
 var indexRouter = require('./routes/index');
@@ -51,7 +52,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-mongoose.connect('mongodb://localhost:27017/Rfx_Database')
+mongoose.connect(`mongodb://${process.env.DATABASE}/Rfx_Database`)
 const database = mongoose.connection;
 database.once('open', ()=> {
   console.log("connection established")

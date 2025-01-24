@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema
 
-const priceSchema = new Schema ({
-    Srno:{type:String, require:true},
-    itemName:{type:String, require:true},
-    description:{type:String, require:true},
-    quantity:{type:Number, require:true},
-    uom:{type:String, require:true},
-    unitRate:{type:Number},
-    rfxNumber:{type:String, ref: 'rfx', unique: true}
-    
-})
+const priceSchema = new mongoose.Schema({
+    rfxNumber: { type: String, required: true },
+    Srno: { type: String, required: true },
+    itemName: String,
+    description: String,
+    quantity: Number,
+    uom: String,
+    unitRate: Number,
+    totalPrice: Number
+}, {
+    timestamps: true
+});
 
-const Price = mongoose.model('pricebid', priceSchema)
+priceSchema.index({ rfxNumber: 1, Srno: 1 }, { unique: true }); // Prevent duplicate Srno per rfxNumber
 
-module.exports = Price;
+module.exports = mongoose.model('Price', priceSchema);
