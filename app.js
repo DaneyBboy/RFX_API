@@ -52,7 +52,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-mongoose.connect(`mongodb://${process.env.DATABASE}/Rfx_Database`)
+mongoose.connect(`${process.env.DATABASE}Rfx_Database`)
 const database = mongoose.connection;
 database.once('open', ()=> {
   console.log("connection established")

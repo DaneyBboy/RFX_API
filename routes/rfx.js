@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({ storage })
 
-const client = new MongoClient(`mongodb://${process.env.DATABASE}/`)
+const client = new MongoClient(`${process.env.DATABASE}/`)
 
 router.get('/list', async function (req, res, next) {
   let result = await rfx.find()
