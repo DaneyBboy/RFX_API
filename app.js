@@ -6,7 +6,7 @@ var logger = require('morgan');
 var cors = require('cors')
 require('dotenv').config();
 
-
+const PORT = process.env.PORT || 3000;
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var rfxRouter = require('./routes/rfx')
