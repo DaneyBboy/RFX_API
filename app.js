@@ -56,6 +56,10 @@ mongoose.connect(`${process.env.DATABASE}Rfx_Database`)
 const database = mongoose.connection;
 database.once('open', ()=> {
   console.log("connection established")
+
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
 })
 
 module.exports = app;
