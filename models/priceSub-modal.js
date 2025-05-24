@@ -11,12 +11,13 @@ const itemSchema = new mongoose.Schema({
 });
 
 const pricesubSchema = new mongoose.Schema({
-    rfxNumber:{type:String, required:true},
+    rfxNumber: { type: String, required: true },
     name: { type: String, required: true },
-    email: { type: String, required: true },
-    items: [itemSchema], // Array of items    
+    email: { type: String, required: true }, // Removed unique: true here
+    items: [itemSchema]
 });
 
-pricesubSchema.index({ rfxNumber: 1, Srno: 1 }, { unique: true });
+// Compound unique index ensures email is unique within each rfxNumber
+pricesubSchema.index({ rfxNumber: 1, email: 1 }, { unique: true });
 
 module.exports = mongoose.model('pricesub', pricesubSchema);

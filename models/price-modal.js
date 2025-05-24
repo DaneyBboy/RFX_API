@@ -1,14 +1,18 @@
 const mongoose = require('mongoose');
 
-const priceSchema = new mongoose.Schema({
-    rfxNumber: { type: String, required: true },
+const itemSchema = new mongoose.Schema({
     Srno: { type: String, required: true },
-    itemName: String,
-    description: String,
-    quantity: Number,
-    uom: String,
-    unitRate: Number,
-    totalPrice: Number
+    itemName: { type: String, required: true },
+    description: { type: String },
+    quantity: { type: Number, required:true },
+    uom: { type: String },
+    unitRate: { type: Number },
+    totalPrice: { type: Number }
+});
+
+const priceSchema = new mongoose.Schema({
+    rfxNumber:{type:String, required:true},
+    items: [itemSchema], // Array of items    
 }, {
     timestamps: true
 });
