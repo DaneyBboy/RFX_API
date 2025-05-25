@@ -6,7 +6,7 @@ var logger = require('morgan');
 var cors = require('cors')
 require('dotenv').config();
 
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 10000;
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var rfxRouter = require('./routes/rfx')
@@ -57,8 +57,8 @@ const database = mongoose.connection;
 database.once('open', ()=> {
   console.log("connection established")
 
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+  app.listen(port, '0.0.0.0', () => {
+    console.log(`Server running on port ${port}`);
   });
 })
 
